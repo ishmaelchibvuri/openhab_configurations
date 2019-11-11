@@ -346,25 +346,44 @@ then
 			logInfo("SIREN_SCREAMER","Loud Alarm Running - 1st Round - 1MIN") 
 			sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Loud Alarm Running - 1st Round - 1MIN")
 		
-							// KEEP SCREAMING FOR 7 MORE MINUTES
+							// KEEP SCREAMING FOR 1 MINUTE
 								
-												createTimer(now.plusMinutes(7)) [|
+							createTimer(now.plusMinutes(1)) [|
 													
-													if (Alarm_Panic_Btn.state == ON){
-													
-														Alarm_Panic_Btn.sendCommand(OFF)										
+								if (Alarm_Panic_Btn.state == ON){									
 					
-														logInfo("SIREN_SCREAMER","Siren has now Stopped Screaming") 
-														sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has now Stopped Screaming")
-													  
+								logInfo("SIREN_SCREAMER","1 Minute Lapsed - Siren is still screaming - Activating Stage 2 Noise") 
+								sendNotification("ishmaelchibvuri@gmail.com", "1 Minute Lapsed - Siren is still screaming - Activating Stage 2 Noise","")
+								sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "1 Minute Lapsed - Siren is still screaming - Activating Stage 2 Noise")						
+											
+								// SWITCH ON HOOVER
+								// TURN ON AND OFF THE LIGHTS
+								// Alarm_Panic_Btn.sendCommand(OFF)	
+								
+											// KEEP SCREAMING FOR 7 MORE MINUTES
+												
+											createTimer(now.plusMinutes(7)) [|
+																	
+												if (Alarm_Panic_Btn.state == ON){
+																	
+												Alarm_Panic_Btn.sendCommand(OFF)										
+									
+												logInfo("SIREN_SCREAMER","7 Minutes Lapsed - Siren has now Stopped Screaming") 												
+												sendNotification("ishmaelchibvuri@gmail.com", "7 Minutes Lapsed - Siren has now Stopped Screaming","")
+												sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "7 Minutes Lapsed - Siren has now Stopped Screaming")
+																	  
 												}	
-													]
+											]
+							
+													  
+								}	
+							]
 													
 	} else {	
 	
-	logInfo("SIREN_SCREAMER","Siren has now Stopped Screaming") 
-	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has now Stopped Screaming")
-	sendNotification("ishmaelchibvuri@gmail.com", "Siren has now Stopped Screaming","")
+	logInfo("SIREN_SCREAMER","Siren has been de-activated") 
+	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has been de-activated")
+	sendNotification("ishmaelchibvuri@gmail.com", "Siren has been de-activated","")
 	
 	}
 end
