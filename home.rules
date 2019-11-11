@@ -384,9 +384,29 @@ then
 	
 	logInfo("SIREN_SCREAMER","Siren has been DE-ACTIVATED!!") 
 	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has been DE-ACTIVATED!!")
-	sendNotification("ishmaelchibvuri@gmail.com", "Siren has been DE-ACTIVATED!!","")
-	
+	sendNotification("ishmaelchibvuri@gmail.com", "Siren has been DE-ACTIVATED!!","")	
 	
 	}
+end
+
+
+
+
+rule "ALARM_PRESENCE_DETECTION"
+when
+  Item ishmael_huawei_is_home changed or
+  Item esther_huawei_is_home changed or
+  Item keith_pc_is_on changed
+then
+
+if(ishmael_huawei_is_home.state == OFF && esther_huawei_is_home.state == OFF && keith_pc_is_on.state == OFF) {
+		  
+					Alarm_Arming_Switch.sendCommand(ON) // ACTIVATE ALARM
+					logInfo("ALARM_PRESENCE_DETECTION","CANNOT DETECT ANYONE AT HOME!! - Activating Alarm")
+					sendNotification("ishmaelchibvuri@gmail.com", "CANNOT DETECT ANYONE AT HOME!! - Activating Alarm","")
+					sendMail("montecastellonotifications@gmail.com", "ALARM_PRESENCE_DETECTION", "CANNOT DETECT ANYONE AT HOME!! - Activating Alarm")
+		  		  
+			}
+			
 end
 
