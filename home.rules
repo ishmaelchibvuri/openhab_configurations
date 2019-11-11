@@ -406,6 +406,42 @@ if(ishmael_huawei_is_home.state == OFF && esther_huawei_is_home.state == OFF && 
 					sendNotification("ishmaelchibvuri@gmail.com", "CANNOT DETECT ANYONE AT HOME!! - Activating Alarm","")
 					sendMail("montecastellonotifications@gmail.com", "ALARM_PRESENCE_DETECTION", "CANNOT DETECT ANYONE AT HOME!! - Activating Alarm")
 		  		  
+			} 
+			
+			else {
+			
+			if(ishmael_huawei_is_home.state == ON || esther_huawei_is_home.state == ON || keith_pc_is_on.state == ON) {
+		  	
+		  
+					if(ishmael_huawei_is_home.state == ON) {
+					  
+					  logInfo("ALARM_PRESENCE_DETECTION","ISHMAEL - Detected to be HOME!!")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ISHMAEL - Detected to be HOME!!","")
+					  sendMail("montecastellonotifications@gmail.com", "ALARM_PRESENCE_DETECTION", "ISHMAEL - Detected to be HOME!!")
+						
+						}
+						
+					if(esther_huawei_is_home.state == ON) {
+					  
+					  logInfo("ALARM_PRESENCE_DETECTION","ESTHER - Detected to be HOME!!")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ESTHER - Detected to be HOME!!","")
+					  sendMail("montecastellonotifications@gmail.com", "ALARM_PRESENCE_DETECTION", "ESTHER - Detected to be HOME!!")
+					  
+						
+						}
+						
+					if(keith_pc_is_on.state == ON) {
+					  
+					  logInfo("ALARM_PRESENCE_DETECTION","KEITH - Detected to be HOME!!")
+					  sendNotification("ishmaelchibvuri@gmail.com", "KEITH - Detected to be HOME!!","")
+					  sendMail("montecastellonotifications@gmail.com", "ALARM_PRESENCE_DETECTION", "KEITH - Detected to be HOME!!")
+					  
+						
+						}
+		  
+			}
+			
+			
 			}
 			
 end
