@@ -1,0 +1,371 @@
+// ON SYSTEM STARTUP
+
+rule "SYSTEM INITIALIZATION"
+when
+  System started //ON SYSTEM START
+then  
+  if(now.getHourOfDay < 18 && now.getHourOfDay > 6) {
+  
+  OU_Backyard_Light.sendCommand(OFF)
+  OU_Garage_Light.sendCommand(OFF)
+  logInfo("POWER_IS_BACK","Power Restored : Outdoors lights turned OFF")
+  sendNotification("ishmaelchibvuri@gmail.com", "Power Restored : Outdoors lights turned OFF","")
+  sendMail("montecastellonotifications@gmail.com", "POWER_IS_BACK", "Power Restored : Outdoors lights turned OFF")
+  
+    }
+    else {
+	
+  OU_Backyard_Light.sendCommand(ON)
+  OU_Garage_Light.sendCommand(ON)
+  logInfo("POWER_IS_BACK","Power Restored : Outdoors lights turned ON")
+  sendNotification("ishmaelchibvuri@gmail.com", "Power Restored : Outdoors lights turned ON","")
+  sendMail("montecastellonotifications@gmail.com", "POWER_IS_BACK", "Power Restored : Outdoors lights turned ON")
+  
+    }  
+	
+	sendCommand(OU_Backyard_Power, OFF) // Turn Off Sprinkler
+end
+
+// OUTDOORS LIGHTS RULES
+
+rule "OUTSIDE_LIGHTS_ON"
+when
+  Time cron "0 0 18 1/1 * ? *" //EVERYDAY AT 1800HRS
+then
+  OU_Backyard_Light.sendCommand(ON)
+  OU_Garage_Light.sendCommand(ON)  
+  
+  logInfo("OUTSIDE_LIGHTS_ON","Outdoors lights have been turned ON")
+  sendNotification("ishmaelchibvuri@gmail.com", "Outdoors lights have been turned ON","")
+  sendMail("montecastellonotifications@gmail.com", "OUTSIDE_LIGHTS_ON", "Outdoors lights have been turned on")
+end
+
+rule "OUTSIDE_LIGHTS_OFF"
+when
+  Time cron "0 0 6 1/1 * ? *" //EVERYDAY AT 0600HRS
+then
+  OU_Backyard_Light.sendCommand(OFF)
+  OU_Garage_Light.sendCommand(OFF)  
+  
+  logInfo("OUTSIDE_LIGHTS_OFF","Outdoors lights have been turned OFF")  
+  sendNotification("ishmaelchibvuri@gmail.com", "Outdoors lights have been turned OFF","")
+  sendMail("montecastellonotifications@gmail.com", "OUTSIDE_LIGHTS_OFF", "Outdoors lights have been turned OFF")
+end
+
+
+
+
+
+
+// KEITH LIGHT RULES
+
+
+rule "KIKI_LIGHT_ON"
+when
+  Time cron "0 0 18 1/1 * ? *" //EVERYDAY AT 1800HRS
+then
+  F2_KidsRoom_Light.sendCommand(ON)    
+  logInfo("KIKI_LIGHT_ON","Keith room light has been turned ON") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Keith room light has been turned ON","")
+  sendMail("montecastellonotifications@gmail.com", "KIKI_LIGHT_ON", "Keith room light has been turned ON")
+end
+
+
+rule "KIKI_LIGHT_OFF"
+when
+  Time cron "0 0 7 1/1 * ? *" //EVERYDAY AT 0700HRS
+then
+  F2_KidsRoom_Light.sendCommand(OFF)    
+  logInfo("KIKI_LIGHT_OFF","Keith room light has been turned OFF") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Keith room light has been turned OFF","")
+  sendMail("montecastellonotifications@gmail.com", "KIKI_LIGHT_OFF", "Keith room light has been turned OFF")
+end
+
+
+
+
+
+
+
+// GEYSER RULES
+
+
+rule "GEYSER_WEEKDAYS_ON"
+when
+  Time cron "0 0 3 ? * MON,TUE,WED,THU,FRI *" //WEEKDAYS AT 0300HRS
+then
+  GF_LivingRoom_Fan.sendCommand(ON)    
+  logInfo("GEYSER_WEEKDAYS_ON","Geyser has been turned ON") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned ON","")
+  sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKDAYS_ON", "Geyser has been turned ON")
+end
+
+
+rule "GEYSER_WEEKDAYS_OFF"
+when
+  Time cron "0 30 5 ? * MON,TUE,WED,THU,FRI *" //EVERYDAY AT 0530HRS
+then
+  GF_LivingRoom_Fan.sendCommand(OFF)   
+  logInfo("GEYSER_WEEKDAYS_OFF","Geyser has been turned OFF") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned OFF","")
+  sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKDAYS_OFF", "Geyser has been turned OFF")
+end
+
+
+rule "GEYSER_WEEKEND_ON"
+when
+  Time cron "0 30 5 ? * SAT,SUN *" //WEEKEND ON AT 0530HRS
+then
+  GF_LivingRoom_Fan.sendCommand(ON)   
+  logInfo("GEYSER_WEEKEND_ON","Geyser has been turned ON") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned ON","")
+  sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKEND_ON", "Geyser has been turned ON")
+end
+
+
+rule "GEYSER_WEEKEND_OFF"
+when
+  Time cron "0 30 9 ? * SAT,SUN *" //WEEKEND AT 0930HRS
+then
+  GF_LivingRoom_Fan.sendCommand(OFF)  
+  logInfo("GEYSER_WEEKEND_OFF","Geyser has been turned OFF") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned OFF","")
+  sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKEND_OFF", "Geyser has been turned OFF")
+end
+
+
+
+
+
+
+
+// SPRINKLER RULES
+
+
+rule "SPRINKLER_SYSTEM_AUTO_TIMER_ON"
+when
+  Time cron "0 30 3 1/2 * ? *" //EVERY 2 DAYS AT 0330HRS
+then
+
+  //Do something immediately
+		
+		  logInfo("SPRINKLER_SYSTEM_AUTO_TIMER_ON","The Garden has STARTED watering") 
+		sendNotification("ishmaelchibvuri@gmail.com", "The Garden has STARTED watering","")
+		  sendMail("montecastellonotifications@gmail.com", "SPRINKLER_SYSTEM_AUTO_TIMER_ON", "The Garden has STARTED watering")
+		
+		//TURN OFF AFTER 30 MINUTES
+		createTimer(now.plusMinutes(30)) [|
+        	if (OU_Backyard_Power.state==ON) {				
+				sendCommand(OU_Backyard_Power, OFF)
+				logInfo("SPRINKLER_SYSTEM_AUTO_TIMER_OFF","30 minutes of garden watering has STOPPED") 
+			    sendNotification("ishmaelchibvuri@gmail.com", "30 minutes of garden watering has STOPPED","")
+				sendMail("montecastellonotifications@gmail.com", "SPRINKLER_SYSTEM_AUTO_TIMER_OFF", "30 minutes of garden watering has STOPPED")
+			}
+    	]
+end
+
+
+rule "SPRINKLER_SYSTEM_MANUAL_TRIGGER"
+when
+  Item OU_Backyard_Power received command // MANUAL TRIGGER
+then
+  if (OU_Backyard_Power.state==ON) {
+		//Do something immediately
+			logInfo("SPRINKLER_SYSTEM_MANUAL_TRIGGER_ON","The Garden has STARTED watering") 
+			sendNotification("ishmaelchibvuri@gmail.com", "The Garden has STARTED watering","")
+			sendMail("montecastellonotifications@gmail.com", "SPRINKLER_SYSTEM_MANUAL_TRIGGER_ON", "The Garden has STARTED watering")
+		
+		//TURN OFF AFTER 30 MINUTES
+		createTimer(now.plusMinutes(30)) [|
+        	if (OU_Backyard_Power.state==ON) {				
+				sendCommand(OU_Backyard_Power, OFF)
+				
+				logInfo("SPRINKLER_SYSTEM_MANUAL_TRIGGER_OFF","30 minutes of gardern watering has FINISHED") 
+				sendNotification("ishmaelchibvuri@gmail.com", "30 minutes of gardern watering has FINISHED","")
+				sendMail("montecastellonotifications@gmail.com", "SPRINKLER_SYSTEM_MANUAL_TRIGGER_OFF", "30 minutes of gardern watering has FINISHED")
+			}
+    	]
+	}
+end
+
+
+
+rule "ARMING_ALARM_SYSTEM"
+when
+  Item Alarm_Arming_Switch received command // MANUAL TRIGGER
+then
+
+if(Alarm_Arming_Switch.state == ON){
+
+  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
+  
+			Alarm_Arming_Switch.sendCommand(OFF)
+  
+			if(F2_Bedroom_Door.state == OPEN) {
+			  
+			  logInfo("ARMING_ALARM_SYSTEM","Cannot Activate Alarm : Bedroom door is OPEN")
+			  sendNotification("ishmaelchibvuri@gmail.com", "Cannot Activate Alarm : Bedroom door is OPEN","")
+			  sendMail("montecastellonotifications@gmail.com", "ARMING_ALARM_SYSTEM", "Cannot Activate Alarm : Bedroom door is OPEN")
+				
+				}
+				
+			if(GF_Entryway_Door.state == OPEN) {
+			  
+			  logInfo("ARMING_ALARM_SYSTEM","Cannot Activate Alarm : Front door is OPEN")
+			  sendNotification("ishmaelchibvuri@gmail.com", "Cannot Activate Alarm : Front door is OPEN","")
+			  sendMail("montecastellonotifications@gmail.com", "ARMING_ALARM_SYSTEM", "Cannot Activate Alarm : Front door is OPEN")
+			  
+				
+				}
+				
+			if(GF_LivingRoom_Door.state == OPEN) {
+			  
+			  logInfo("ARMING_ALARM_SYSTEM","Cannot Activate Alarm : Sitting Room door is OPEN")
+			  sendNotification("ishmaelchibvuri@gmail.com", "Cannot Activate Alarm : Sitting Room door is OPEN","")
+			  sendMail("montecastellonotifications@gmail.com", "ARMING_ALARM_SYSTEM", "Cannot Activate Alarm : Sitting Room door is OPEN")
+			  
+				
+				}
+  
+    }
+	
+    else {
+	
+			  logInfo("ARMING_ALARM_SYSTEM","Alarm System is now ACTIVE")
+			  sendNotification("ishmaelchibvuri@gmail.com", "Alarm System is now ACTIVE","")
+			  sendMail("montecastellonotifications@gmail.com", "ARMING_ALARM_SYSTEM", "Alarm System is now ACTIVE")
+  
+    } 
+	
+	}
+end
+
+
+
+rule "ALARM_TRIGGERED"
+when
+  Item F2_Bedroom_Door changed or
+  Item GF_Entryway_Door changed or
+  Item GF_LivingRoom_Door changed
+then
+
+if (Alarm_Arming_Switch.state == ON){
+
+		  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
+		  
+					Door_Status_Light.sendCommand(ON) // DOOR LIGHTS ON
+					Alarm_Panic_Btn.sendCommand(ON) // SIREN NOW SCREEMING			
+		  
+					if(F2_Bedroom_Door.state == OPEN) {
+					  
+					  logInfo("ALARM_TRIGGERED","ALARM IS SCREEMING!! - Bedroom Door COMPROMISED")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - Bedroom Door COMPROMISED","")
+					  sendMail("montecastellonotifications@gmail.com", "ALARM_TRIGGERED", "ALARM IS SCREEMING!! - Bedroom Door COMPROMISED")
+						
+						}
+						
+					if(GF_Entryway_Door.state == OPEN) {
+					  
+					  logInfo("ALARM_TRIGGERED","ALARM IS SCREEMING!! - Front Door COMPROMISED")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - Front Door COMPROMISED","")
+					  sendMail("montecastellonotifications@gmail.com", "ALARM_TRIGGERED", "ALARM IS SCREEMING!! - Front Door COMPROMISED")
+					  
+						
+						}
+						
+					if(GF_LivingRoom_Door.state == OPEN) {
+					  
+					  logInfo("ALARM_TRIGGERED","ALARM IS SCREEMING!! - Sitting Room Door COMPROMISED")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - Sitting Room Door COMPROMISED","")
+					  sendMail("montecastellonotifications@gmail.com", "ALARM_TRIGGERED", "ALARM IS SCREEMING!! - Sitting Room Door COMPROMISED")
+					  
+						
+						}
+		  
+			}
+	}
+	
+    else {
+	
+	
+
+		  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
+		  
+					Door_Status_Light.sendCommand(ON) // DOOR LIGHTS ON
+		  
+					if(F2_Bedroom_Door.state == OPEN) {
+					  
+					  logInfo("NO ALARM","NO ALARM!! - Bedroom Door Open")
+					  sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - Bedroom Door Open","")
+					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - Bedroom Door Open")
+						
+						}
+						
+					if(GF_Entryway_Door.state == OPEN) {
+					  
+					  logInfo("NO ALARM","NO ALARM!! - Front Door Open")
+					  sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - Front Door Open","")
+					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - Front Door Open")
+					  
+						
+						}
+						
+					if(GF_LivingRoom_Door.state == OPEN) {
+					  
+					  logInfo("NO ALARM","NO ALARM!! - Sitting Room Door Open")
+					  sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - Sitting Room Door Open","")
+					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - Sitting Room Door Open")
+					  
+						
+						}
+		  
+			} else {			
+			
+				Door_Status_Light.sendCommand(OFF) // DOOR LIGHTS OFF
+					  
+				logInfo("NO ALARM","NO ALARM!! - All Doors have been closed")
+				sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - All Doors have been closed","")
+				sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - All Doors have been closed")
+			
+			}
+						
+  
+    } 
+end
+
+
+
+rule "SIREN_SCREAMER"
+when
+  Item Alarm_Panic_Btn received command // WHEN ALARM IS RINGING
+then
+  if (Alarm_Panic_Btn.state==ON) {
+  
+		//Do something immediately
+		
+			logInfo("SIREN_SCREAMER","Loud Alarm Running - 1st Round - 1MIN") 
+			sendMail("montecastellonotifications@gmail.com", "Loud Alarm Running - 1st Round - 1MIN")
+		
+							// KEEP SCREAMING FOR 7 MORE MINUTES
+								
+												createTimer(now.plusMinutes(7)) [|
+													
+													if (Alarm_Panic_Btn.state == ON){
+													
+														Alarm_Panic_Btn.sendCommand(OFF)										
+					
+														logInfo("SIREN_SCREAMER","Siren has now Stopped Screaming") 
+														sendMail("montecastellonotifications@gmail.com", "Siren has now Stopped Screaming")
+													  
+												}	
+													]
+													
+	} else {	
+	
+	logInfo("SIREN_SCREAMER","Siren has now Stopped Screaming") 
+	sendMail("montecastellonotifications@gmail.com", "Siren has now Stopped Screaming")
+	sendNotification("ishmaelchibvuri@gmail.com", "Siren has now Stopped Screaming","")
+	
+	}
+end
+

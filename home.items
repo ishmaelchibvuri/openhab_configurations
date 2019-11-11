@@ -1,0 +1,79 @@
+Group     Home                      "MONTE CASTELLO"   <house>                                            ["Building"]
+
+Group     GF                        "Ground Floor"     <groundfloor>        (Home)                        ["GroundFloor"]
+Group     F2                        "Second Floor"     <attic>              (Home)                        ["Attic"]
+Group     AT                        "Attic"            <attic>              (Home)                        ["Attic"]
+Group     OU                        "Outside"          <garden>             (Home)                        ["Outdoor"]
+
+Group     GF_Corridor               "Corridor"         <corridor>           (Home, GF)                    ["Corridor"]
+Group     GF_Dining                 "Dining"                                (Home, GF)                    ["Room"]
+Group     GF_Entryway               "Entryway"         <frontdoor>          (Home, GF)                    ["Room"]
+Group     GF_Kitchen                "Kitchen"          <kitchen>            (Home, GF)                    ["Kitchen"]
+Group     GF_Stairwell              "Stairwell"        <qualityofservice>   (Home, GF)
+Group     GF_StorageRoom            "Storage Room"     <suitcase>           (Home, GF)                    ["Room"]
+Group     GF_Toilet                 "Toilet"           <toilet>             (Home, GF)                    ["Bathroom"]
+Group     GF_LivingRoom             "Living Room"      <sofa>               (Home, GF)                    ["LivingRoom"]
+Group     F2_Balcony                "Balcony"                               (Home, F2)                    ["Outdoor"]
+Group     F2_Bedroom                "Bedroom"          <bedroom>            (Home, F2)                    ["Bedroom"]
+Group     F2_Bathroom               "Bathroom"         <bath>               (Home, F2)                    ["Bathroom"]
+Group     F2_KidsRoom               "Kids Room"        <girl_3>             (Home, F2)                    ["Room"]
+Group     F2_Corridor               "Corridor"         <corridor>           (Home, F2)                    ["Corridor"]
+Group     AT_StorageRoom            "Storage Room"     <suitcase>           (Home, AT)                    ["Room"]
+Group     OU_Backyard               "Backyard"         <lawnmower>          (Home, OU)                    ["Garden"]
+Group     OU_Garage                 "Garage"           <garage>             (Home, OU)                    ["Garage"]
+
+Switch    GF_Corridor_Light         "Downstairs Passage Light"            <light>              (GF_Corridor, gLight)         ["Lighting", "Switchable"]         {channel=""}
+Switch    GF_Dining_Light           "Dining Light"            <light>              (GF_Dining, gLight)           ["Lighting", "Switchable"]         {channel=""}
+Switch    GF_Dining_Power           "Dining Plug"     <poweroutlet>        (GF_Dining, gPower)           ["Switch", "Switchable"]           {channel=""}
+Switch    GF_Kitchen_Light          "Kitchen Light"            <light>              (GF_Kitchen, gLight)          ["Lighting", "Switchable"]         {channel=""}
+Switch    GF_Kitchen_Motion         "Kitchen Sensor"    <motion>             (GF_Kitchen, gMotion)         ["MotionDetector", "Switchable"]   {channel=""}
+
+Switch    GF_Kitchen_Power1          "Microwave"     <poweroutlet>        (GF_Kitchen, gPower)          ["Switch", "Switchable"]           {channel=""}
+Switch    GF_Kitchen_Power2          "Kettle"     <poweroutlet>        (GF_Kitchen, gPower)          ["Switch", "Switchable"]           {channel=""}
+Switch    GF_Kitchen_Power3          "Fridge"     <poweroutlet>        (GF_Kitchen, gPower)          ["Switch", "Switchable"]           {channel=""}
+Switch    GF_Stairwell_Light        "Stairs Light"            <light>              (GF_Stairwell, gLight)        ["Lighting", "Switchable"]         {channel=""}
+Switch    GF_StorageRoom_Light      "Store Room Light"            <light>              (GF_StorageRoom, gLight)      ["Lighting", "Switchable"]         {channel=""}
+Switch    GF_Toilet_Light           "Guest Toilet Light"            <light>              (GF_Toilet, gLight)           ["Lighting", "Switchable"]         {channel=""}
+Switch    GF_LivingRoom_Light       "Sitting Room Light"            <light>              (GF_LivingRoom, gLight)       ["Lighting", "Switchable"]         {channel=""}
+
+Switch    GF_LivingRoom_Motion      "Sitting Room Sensor"    <motion>             (GF_LivingRoom, gMotion)      ["MotionDetector", "Switchable"]   {channel=""}
+Switch    GF_LivingRoom_TV       "TV"     <poweroutlet>        (GF_LivingRoom, gPower)       ["Switch", "Switchable"]           {channel=""}
+Switch    GF_LivingRoom_Speaker       "Speakers"     <poweroutlet>        (GF_LivingRoom, gPower)       ["Switch", "Switchable"]           {channel=""}
+Switch    GF_LivingRoom_Fan       "Fan"     <poweroutlet>        (GF_LivingRoom, gPower)       ["Switch", "Switchable"]           {channel="mqtt:topic:50aae511:fan"}
+
+Switch    F2_Balcony_Light          "Balcony Light"            <light>              (F2_Balcony, gLight)          ["Lighting", "Switchable"]         {channel=""}
+Switch    F2_Bedroom_Light          "Bedroom Light"            <light>              (F2_Bedroom, gLight)          ["Lighting", "Switchable"]         {channel=""}
+
+Switch    F2_Bedroom_Motion         "Bedroom Sensor"    <motion>             (F2_Bedroom, gMotion)         ["MotionDetector", "Switchable"]   {channel=""}
+Switch    F2_Bedroom_Power          "Bedroom Plug"     <poweroutlet>        (F2_Bedroom, gPower)          ["Switch", "Switchable"]           {channel="mqtt:topic:458f7cdf:F2_Bedroom_Power"}
+Switch    F2_Bathroom_Light         "Bathroom Light"            <light>              (F2_Bathroom, gLight)         ["Lighting", "Switchable"]         {channel=""}
+
+Switch    F2_KidsRoom_Light         "Kikis Room Light"            <light>              (F2_KidsRoom, gLight)         ["Lighting", "Switchable"]         {channel="mqtt:topic:d8b4dae5:F2_KidsRoom_Light"}
+
+
+
+Switch    F2_KidsRoom_Power         "Kikis PC"     <poweroutlet>        (F2_KidsRoom, gPower)         ["Switch", "Switchable"]           {channel="mqtt:topic:b5e1b89e:F2_KidsRoom_Power"}
+Switch    F2_Corridor_Light         "Upstairs Passage Light"            <light>              (F2_Corridor, gLight)         ["Lighting", "Switchable"]         {channel=""}
+Switch    AT_StorageRoom_Light      "Store Room Light"            <light>              (AT_StorageRoom, gLight)      ["Lighting", "Switchable"]         {channel=""}
+Switch    OU_Backyard_Light         "Garden Lights"            <light>              (OU_Backyard, gLight)         ["Lighting", "Switchable"]         {channel="mqtt:topic:a7bb0e2f:OU_Backyard_Light"}
+Switch    OU_Backyard_Power         "Sprinkler"     <poweroutlet>        (OU_Backyard, gPower)         ["Switch", "Switchable"]           {channel=""}
+Number    OU_Backyard_Temperature   "Fish Pond Temperature"      <temperature>        (OU_Backyard, gTemperature)   ["Temperature"]                    {channel=""}
+Switch    OU_Garage_Light           "Garage Light"            <light>              (OU_Garage, gLight)           ["Lighting", "Switchable"]         {channel="mqtt:topic:8797f26b:OU_Garage_Light"}
+Switch    OU_Garage_Motion          "Garage Sensor"    <motion>             (OU_Garage, gMotion)          ["MotionDetector", "Switchable"]   {channel=""}
+Switch    OU_Garage_Power           "Garage Plug"     <poweroutlet>        (OU_Garage, gPower)           ["Switch", "Switchable"]           {channel=""}
+
+Contact   F2_Bedroom_Door            "Bedroom Door [%s]" { gpio="pin:21 activelow:yes" }
+Contact   GF_Entryway_Door          "Front Door [%s]" { gpio="pin:20 activelow:yes" }
+Contact   GF_LivingRoom_Door        "Sitting Room Door [%s]" { gpio="pin:16 activelow:yes" }
+Switch    Alarm_Arming_Switch      ["Switch", "Switchable"]
+Switch    Alarm_Panic_Btn    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
+Switch    Door_Status_Light    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
+
+
+Group:Switch:OR(ON, OFF)         gLight         "Light"           <light>         (Home)   ["Lighting", "Switchable"]
+Group:Switch:OR(ON, OFF)         gPower         "Power Outlet"    <poweroutlet>   (Home)   ["Switch", "Switchable"]
+Group:Contact:OR(OPEN, CLOSED)   gDoor          "Door"            <door>          (Home)   ["Door"]
+Group:Switch:OR(ON, OFF)         gMotion        "Motion Sensor"   <motion>        (Home)   ["MotionDetector", "Switchable"]
+Group:Contact:OR(OPEN, CLOSED)   gWindow        "Window"          <window>        (Home)   ["Window"]
+Group:Number:AVG                 gTemperature   "Temperature"     <temperature>   (Home)   ["Temperature"]
+
