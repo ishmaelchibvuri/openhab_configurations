@@ -1,0 +1,86 @@
+sitemap home label="Monte Castello" {
+	     
+ 	
+ Frame label="WHO IS HOME"
+       {
+            Switch item=ishmael_huawei_is_home icon="boy_3" label="Ishmael"
+            Switch item=esther_huawei_is_home icon="girl_3" label="Esther"			
+            Switch item=keith_pc_is_on icon="boy_3" label="Keith"
+       }
+
+
+Frame label="OUTDOORS"
+	       {
+		    	Default item=OU_Garage_Light label="Garage Light"
+			Default item=OU_Backyard_Light label="Garden Light"
+			Default item=F2_Balcony_Light label="Balcony Light"
+            Default item=OU_Backyard_Power label="Aquaponics Pump"
+	       }
+	   
+Frame label="DOWNSTAIRS"
+       {
+		    	Default item=GF_Dining_Light label="Dining Light"
+            Default item=GF_Kitchen_Light label="Kitchen Light"
+            Default item=GF_Stairwell_Light label="Stairs Light"
+            Default item=GF_StorageRoom_Light label="Store Room Light"
+            Default item=GF_Toilet_Light label="Guest Toilet Light"
+            Default item=GF_LivingRoom_Light label="Seating Room Light"
+       }
+ Frame label="UPSTAIRS"
+       {
+            Default item=F2_Bedroom_Light label="Bedroom Light"
+            Default item=F2_Bathroom_Light label="Bathroom Light"
+            Default item=F2_KidsRoom_Light label="Kikis Room Light"
+            Default item=F2_Corridor_Light label="Upstairs Passage Light"
+            Default item=F2_KidsRoom_Power label="Kikis PC"
+       }
+Frame label="ATTIC"
+       {
+            Default item=GF_LivingRoom_Fan label="Geyser"
+       }
+Frame label="ALL CONTROLS"{
+        Text label="All Lights" icon="light" {
+            Default item=GF_Corridor_Light label="Downstairs Passage Light"
+            Default item=GF_Dining_Light label="Dining Light"
+            Default item=GF_Kitchen_Light label="Kitchen Light"
+            Default item=GF_Stairwell_Light label="Stairs Light"
+            Default item=GF_StorageRoom_Light label="Store Room Light"
+            Default item=GF_Toilet_Light label="Guest Toilet Light"
+            Default item=GF_LivingRoom_Light label="Sitting Room Light"
+            Default item=F2_Balcony_Light label="Balcony Light"
+            Default item=F2_Bedroom_Light label="Bedroom Light"
+            Default item=F2_Bathroom_Light label="Bathroom Light"
+            Default item=F2_KidsRoom_Light label="Kikis Room Light"
+            Default item=F2_Corridor_Light label="Upstairs Passage Light"
+            Default item=AT_StorageRoom_Light label="Attic Light"
+            Default item=OU_Backyard_Light label="Garden Lights"
+            Default item=OU_Garage_Light label="Garage Light"
+        }
+        Text label="All Plugs" icon="poweroutlet" {
+			Default item=GF_LivingRoom_Fan label="Geyser"
+            Default item=GF_Dining_Power label="Dining Plug"
+            Default item=GF_Kitchen_Power1 label="Microwave"
+            Default item=GF_Kitchen_Power2 label="Kettle"
+            Default item=GF_Kitchen_Power3 label="Fridge"
+            Default item=GF_LivingRoom_TV label="TV"
+            Default item=GF_LivingRoom_Speaker label="Speakers"
+            Default item=GF_LivingRoom_Computer label="Computer"
+            Default item=F2_Bedroom_Power label="Bedroom Plug"
+            Default item=F2_KidsRoom_Power label="Kikis PC"
+            Default item=OU_Backyard_Power label="Sprinkler"
+            Default item=OU_Garage_Power label="Garage Plug"
+        }
+    }
+	
+Frame label="ALARM SYSTEM"{
+        Text label="Alarm Activation" icon="motion" {
+		    Default item=Alarm_Arming_Switch label="Alarm Status" icon="siren"
+            Text item=F2_Bedroom_Door
+            Text item=GF_Entryway_Door
+            Text item=GF_LivingRoom_Door
+        }
+        Default item=Alarm_Panic_Btn label="Alarm Panic" icon="siren" 
+    }
+      
+}
+
