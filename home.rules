@@ -335,7 +335,7 @@ end
 
 
 
-rule "SIREN_SCREAMER"
+rule "Loud Alarm Running - 1st Round - 1MIN"
 when
   Item Alarm_Panic_Btn received command // WHEN ALARM IS RINGING
 then
@@ -344,7 +344,7 @@ then
 		//Do something immediately
 		
 			logInfo("SIREN_SCREAMER","Loud Alarm Running - 1st Round - 1MIN") 
-			sendMail("montecastellonotifications@gmail.com", "Loud Alarm Running - 1st Round - 1MIN")
+			sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Loud Alarm Running - 1st Round - 1MIN")
 		
 							// KEEP SCREAMING FOR 7 MORE MINUTES
 								
@@ -355,7 +355,7 @@ then
 														Alarm_Panic_Btn.sendCommand(OFF)										
 					
 														logInfo("SIREN_SCREAMER","Siren has now Stopped Screaming") 
-														sendMail("montecastellonotifications@gmail.com", "Siren has now Stopped Screaming")
+														sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has now Stopped Screaming")
 													  
 												}	
 													]
@@ -363,7 +363,7 @@ then
 	} else {	
 	
 	logInfo("SIREN_SCREAMER","Siren has now Stopped Screaming") 
-	sendMail("montecastellonotifications@gmail.com", "Siren has now Stopped Screaming")
+	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has now Stopped Screaming")
 	sendNotification("ishmaelchibvuri@gmail.com", "Siren has now Stopped Screaming","")
 	
 	}
