@@ -253,7 +253,7 @@ if (Alarm_Arming_Switch.state == ON){
 
 		  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
 		  
-					Door_Status_Light.sendCommand(ON) // DOOR LIGHTS ON
+					Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
 					Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(ON) // SIREN NOW SCREEMING			
 		  
 					if(F2_Bedroom_Door.state == OPEN) {
@@ -291,7 +291,7 @@ if (Alarm_Arming_Switch.state == ON){
 
 		  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
 		  
-					Door_Status_Light.sendCommand(ON) // DOOR LIGHTS ON
+					Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
 		  
 					if(F2_Bedroom_Door.state == OPEN) {
 					  
@@ -321,7 +321,7 @@ if (Alarm_Arming_Switch.state == ON){
 		  
 			} else {			
 			
-				Door_Status_Light.sendCommand(OFF) // DOOR LIGHTS OFF
+				Door_Status_Light_NO_DISPLAY.sendCommand(OFF) // DOOR LIGHTS OFF
 					  
 				logInfo("DOORS CLOSED","All Doors have been closed")
 				sendNotification("ishmaelchibvuri@gmail.com", "All Doors have been closed","")
@@ -346,8 +346,7 @@ then
 			logInfo("SIREN_SCREAMER","ALARM IS SCREEMING!! - 1st Round - 1MIN") 			 
 			sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - 1st Round - 1MIN","")
 			sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "ALARM IS SCREEMING!! - 1st Round - 1MIN")
-			Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(ON)
-		
+					
 							// KEEP SCREAMING FOR 1 MINUTE
 								
 							createTimer(now.plusMinutes(1)) [|
@@ -360,7 +359,8 @@ then
 											
 								// SWITCH ON HOOVER
 								// TURN ON AND OFF THE LIGHTS
-								// Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)	
+								 Door_Status_Light_NO_DISPLAY.sendCommand(ON)
+								 Alarm_Panic_Btn.sendCommand(ON)								 
 								
 											// KEEP SCREAMING FOR 7 MORE MINUTES
 												
@@ -368,7 +368,8 @@ then
 																	
 												if (Alarm_Panic_Level_One_NO_DISPLAY.state == ON){
 																	
-												Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)										
+												Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)
+												Alarm_Panic_Btn.sendCommand(OFF)										
 									
 												logInfo("SIREN_SCREAMER","7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream") 												
 												sendNotification("ishmaelchibvuri@gmail.com", "7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream","")
@@ -383,6 +384,7 @@ then
 													
 	} else {	
 	
+	Door_Status_Light_NO_DISPLAY.sendCommand(OFF)
 	logInfo("SIREN_SCREAMER","Siren has been DE-ACTIVATED!!") 
 	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has been DE-ACTIVATED!!")
 	sendNotification("ishmaelchibvuri@gmail.com", "Siren has been DE-ACTIVATED!!","")	
