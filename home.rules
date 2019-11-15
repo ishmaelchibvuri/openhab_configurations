@@ -197,7 +197,7 @@ then
 
 if(Alarm_Arming_Switch.state == ON){
 
-  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
+  if(F2_Bedroom_Door.state == OPEN || GF_Front_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
   
 			Alarm_Arming_Switch.sendCommand(OFF)
   
@@ -209,7 +209,7 @@ if(Alarm_Arming_Switch.state == ON){
 				
 				}
 				
-			if(GF_Entryway_Door.state == OPEN) {
+			if(GF_Front_Door.state == OPEN) {
 			  
 			  logInfo("ARMING_ALARM_SYSTEM","Cannot Activate Alarm : Front door is OPEN")
 			  sendNotification("ishmaelchibvuri@gmail.com", "Cannot Activate Alarm : Front door is OPEN","")
@@ -245,13 +245,13 @@ end
 rule "ALARM_TRIGGERED"
 when
   Item F2_Bedroom_Door changed or
-  Item GF_Entryway_Door changed or
+  Item GF_Front_Door changed or
   Item GF_LivingRoom_Door changed
 then
 
 if (Alarm_Arming_Switch.state == ON){
 
-		  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
+		  if(F2_Bedroom_Door.state == OPEN || GF_Front_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
 		  
 					Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
 					Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(ON) // SIREN NOW SCREEMING			
@@ -264,7 +264,7 @@ if (Alarm_Arming_Switch.state == ON){
 						
 						}
 						
-					if(GF_Entryway_Door.state == OPEN) {
+					if(GF_Front_Door.state == OPEN) {
 					  
 					  logInfo("ALERT","ALERT!! - Front Door COMPROMISED")
 					  sendNotification("ishmaelchibvuri@gmail.com", "ALERT!! - Front Door COMPROMISED","")
@@ -289,7 +289,7 @@ if (Alarm_Arming_Switch.state == ON){
 	
 	
 
-		  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
+		  if(F2_Bedroom_Door.state == OPEN || GF_Front_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
 		  
 					Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
 		  
@@ -301,7 +301,7 @@ if (Alarm_Arming_Switch.state == ON){
 						
 						}
 						
-					if(GF_Entryway_Door.state == OPEN) {
+					if(GF_Front_Door.state == OPEN) {
 					  
 					  logInfo("NO ALARM","Front Door Open")
 					  sendNotification("ishmaelchibvuri@gmail.com", "Front Door Open","")
