@@ -11,7 +11,7 @@ Switch    GF_Kitchen_Light          "Kitchen Light"            <light>          
 Switch    GF_Stairwell_Light        "Stairs Light"            <light>              (GF, gLight)        ["Lighting", "Switchable"]         {channel=""}
 Switch    GF_Toilet_Light           "Guest Toilet Light"            <light>              (GF, gLight)           ["Lighting", "Switchable"]         {channel=""}
 Switch    GF_LivingRoom_Light       "Sitting Room Light"            <light>              (GF, gLight)       ["Lighting", "Switchable"]         {channel=""}
-Switch    GF_HTPC_Power          "HTPC Power"     <poweroutlet>        (GF, gPower)          ["Switch", "Switchable"]           {channel="mqtt:topic:458f7cdf:F2_Bedroom_Power"}
+Switch    GF_HTPC_Power          "HTPC Power"     <poweroutlet>        (GF, gPower)          ["Switch", "Switchable"]           {channel=""}
 Switch    GF_LivingRoom_Fan       "Fan"     <poweroutlet>        (GF, gPower)       ["Switch", "Switchable"]           {channel="mqtt:topic:50aae511:fan"}
 
 
