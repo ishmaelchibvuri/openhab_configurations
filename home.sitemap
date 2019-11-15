@@ -24,7 +24,7 @@ Frame label="DOWNSTAIRS"
             Default item=GF_Kitchen_Light label="Kitchen Light"			
             Default item=GF_Toilet_Light label="Guest Toilet Light"
             Default item=GF_Stairwell_Light label="Stairs Light"			
-            Default item=GF_LivingRoom_TV label="TV"
+            Default item=GF_HTPC_Power label="TV"
        }
  Frame label="UPSTAIRS"
        {
