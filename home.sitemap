@@ -78,7 +78,7 @@ Frame label="ALARM SYSTEM"{
             Text item=F2_Bedroom_Door
             Text item=GF_Entryway_Door
             Text item=GF_LivingRoom_Door			
-            Default item=Alarm_Panic_Level_One_NO_DISPLAY label="Soft Alarm" icon="soundvolume_mute"
+            Default item=Alarm_Panic_Level_One_NO_DISPLAY label="Soft Alarm" icon="soundvolume"
         }
         Default item=Alarm_Panic_Btn label="Alarm Panic" icon="siren" 
     }
