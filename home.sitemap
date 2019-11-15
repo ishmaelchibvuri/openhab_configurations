@@ -74,11 +74,11 @@ Frame label="ALL CONTROLS"{
 	
 Frame label="ALARM SYSTEM"{
         Text label="Alarm Activation" icon="motion" {
-		    Default item=Alarm_Arming_Switch label="Alarm Status" icon="siren"
+		    Default item=Alarm_Arming_Switch label="Alarm Status" icon="motion"
             Text item=F2_Bedroom_Door
             Text item=GF_Entryway_Door
             Text item=GF_LivingRoom_Door			
-            Default item=Alarm_Panic_Level_One_NO_DISPLAY label="Soft Alarm" icon="soundvolume"
+            Default item=Alarm_Panic_Level_One_NO_DISPLAY label="Soft Alarm" icon="siren"
         }
         Default item=Alarm_Panic_Btn label="Alarm Panic" icon="siren" 
     }
