@@ -67,7 +67,10 @@ Contact   GF_Entryway_Door          "Front Door [%s]" { gpio="pin:20 activelow:y
 Contact   GF_LivingRoom_Door        "Sitting Room Door [%s]" { gpio="pin:16 activelow:yes" }
 Switch    Alarm_Arming_Switch      ["Switch", "Switchable"]
 Switch    Alarm_Panic_Btn    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
-Switch    Door_Status_Light    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
+
+
+Switch    Door_Status_Light_NO_DISPLAY    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
+Contact    Alarm_Panic_Level_One_NO_DISPLAY    "Level One Siren [%s]" {channel="mqtt:topic:50aae511:fan"}
 
 
 Group:Switch:OR(ON, OFF)         gLight         "Light"           <light>         (Home)   ["Lighting", "Switchable"]

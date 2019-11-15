@@ -77,7 +77,8 @@ Frame label="ALARM SYSTEM"{
 		    Default item=Alarm_Arming_Switch label="Alarm Status" icon="siren"
             Text item=F2_Bedroom_Door
             Text item=GF_Entryway_Door
-            Text item=GF_LivingRoom_Door
+            Text item=GF_LivingRoom_Door			
+            Text item=Alarm_Panic_Level_One_NO_DISPLAY
         }
         Default item=Alarm_Panic_Btn label="Alarm Panic" icon="siren" 
     }

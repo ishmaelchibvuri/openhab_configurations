@@ -254,30 +254,30 @@ if (Alarm_Arming_Switch.state == ON){
 		  if(F2_Bedroom_Door.state == OPEN || GF_Entryway_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
 		  
 					Door_Status_Light.sendCommand(ON) // DOOR LIGHTS ON
-					Alarm_Panic_Btn.sendCommand(ON) // SIREN NOW SCREEMING			
+					Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(ON) // SIREN NOW SCREEMING			
 		  
 					if(F2_Bedroom_Door.state == OPEN) {
 					  
-					  logInfo("ALARM_TRIGGERED","ALARM IS SCREEMING!! - Bedroom Door COMPROMISED")
-					  sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - Bedroom Door COMPROMISED","")
-					  sendMail("montecastellonotifications@gmail.com", "ALARM_TRIGGERED", "ALARM IS SCREEMING!! - Bedroom Door COMPROMISED")
+					  logInfo("ALERT","ALERT!! - Bedroom Door COMPROMISED")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ALERT!! - Bedroom Door COMPROMISED","")
+					  sendMail("montecastellonotifications@gmail.com", "ALERT", "ALERT!! - Bedroom Door COMPROMISED")
 						
 						}
 						
 					if(GF_Entryway_Door.state == OPEN) {
 					  
-					  logInfo("ALARM_TRIGGERED","ALARM IS SCREEMING!! - Front Door COMPROMISED")
-					  sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - Front Door COMPROMISED","")
-					  sendMail("montecastellonotifications@gmail.com", "ALARM_TRIGGERED", "ALARM IS SCREEMING!! - Front Door COMPROMISED")
+					  logInfo("ALERT","ALERT!! - Front Door COMPROMISED")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ALERT!! - Front Door COMPROMISED","")
+					  sendMail("montecastellonotifications@gmail.com", "ALERT", "ALERT!! - Front Door COMPROMISED")
 					  
 						
 						}
 						
 					if(GF_LivingRoom_Door.state == OPEN) {
 					  
-					  logInfo("ALARM_TRIGGERED","ALARM IS SCREEMING!! - Sitting Room Door COMPROMISED")
-					  sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - Sitting Room Door COMPROMISED","")
-					  sendMail("montecastellonotifications@gmail.com", "ALARM_TRIGGERED", "ALARM IS SCREEMING!! - Sitting Room Door COMPROMISED")
+					  logInfo("ALERT","ALERT!! - Sitting Room Door COMPROMISED")
+					  sendNotification("ishmaelchibvuri@gmail.com", "ALERT!! - Sitting Room Door COMPROMISED","")
+					  sendMail("montecastellonotifications@gmail.com", "ALERT", "ALERT!! - Sitting Room Door COMPROMISED")
 					  
 						
 						}
@@ -295,26 +295,26 @@ if (Alarm_Arming_Switch.state == ON){
 		  
 					if(F2_Bedroom_Door.state == OPEN) {
 					  
-					  logInfo("NO ALARM","NO ALARM!! - Bedroom Door Open")
-					  sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - Bedroom Door Open","")
-					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - Bedroom Door Open")
+					  logInfo("NO ALARM","Bedroom Door Open")
+					  sendNotification("ishmaelchibvuri@gmail.com", "Bedroom Door Open","")
+					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "Bedroom Door Open")
 						
 						}
 						
 					if(GF_Entryway_Door.state == OPEN) {
 					  
-					  logInfo("NO ALARM","NO ALARM!! - Front Door Open")
-					  sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - Front Door Open","")
-					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - Front Door Open")
+					  logInfo("NO ALARM","Front Door Open")
+					  sendNotification("ishmaelchibvuri@gmail.com", "Front Door Open","")
+					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "Front Door Open")
 					  
 						
 						}
 						
 					if(GF_LivingRoom_Door.state == OPEN) {
 					  
-					  logInfo("NO ALARM","NO ALARM!! - Sitting Room Door Open")
-					  sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - Sitting Room Door Open","")
-					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - Sitting Room Door Open")
+					  logInfo("NO ALARM","Sitting Room Door Open")
+					  sendNotification("ishmaelchibvuri@gmail.com", "Sitting Room Door Open","")
+					  sendMail("montecastellonotifications@gmail.com", "NO ALARM", "Sitting Room Door Open")
 					  
 						
 						}
@@ -323,9 +323,9 @@ if (Alarm_Arming_Switch.state == ON){
 			
 				Door_Status_Light.sendCommand(OFF) // DOOR LIGHTS OFF
 					  
-				logInfo("NO ALARM","NO ALARM!! - All Doors have been closed")
-				sendNotification("ishmaelchibvuri@gmail.com", "NO ALARM!! - All Doors have been closed","")
-				sendMail("montecastellonotifications@gmail.com", "NO ALARM", "NO ALARM!! - All Doors have been closed")
+				logInfo("DOORS CLOSED","All Doors have been closed")
+				sendNotification("ishmaelchibvuri@gmail.com", "All Doors have been closed","")
+				sendMail("montecastellonotifications@gmail.com", "DOORS CLOSED", "All Doors have been closed")
 			
 			}
 						
@@ -337,21 +337,22 @@ end
 
 rule "SIREN_SCREAMER"
 when
-  Item Alarm_Panic_Btn received command // WHEN ALARM IS RINGING
+  Item Alarm_Panic_Level_One_NO_DISPLAY received command // WHEN ALARM IS RINGING
 then
-  if (Alarm_Panic_Btn.state==ON) {
+  if (Alarm_Panic_Level_One_NO_DISPLAY.state==ON) {
   
 		//Do something immediately
 		
 			logInfo("SIREN_SCREAMER","ALARM IS SCREEMING!! - 1st Round - 1MIN") 			 
 			sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - 1st Round - 1MIN","")
 			sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "ALARM IS SCREEMING!! - 1st Round - 1MIN")
+			Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(ON)
 		
 							// KEEP SCREAMING FOR 1 MINUTE
 								
 							createTimer(now.plusMinutes(1)) [|
 													
-								if (Alarm_Panic_Btn.state == ON){									
+								if (Alarm_Panic_Level_One_NO_DISPLAY.state == ON){									
 					
 								logInfo("SIREN_SCREAMER","1 Minute Lapsed - ALARM IS SCREEMING!! - Activating Stage 2 Noise") 
 								sendNotification("ishmaelchibvuri@gmail.com", "1 Minute Lapsed - ALARM IS SCREEMING!! - Activating Stage 2 Noise","")
@@ -359,15 +360,15 @@ then
 											
 								// SWITCH ON HOOVER
 								// TURN ON AND OFF THE LIGHTS
-								// Alarm_Panic_Btn.sendCommand(OFF)	
+								// Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)	
 								
 											// KEEP SCREAMING FOR 7 MORE MINUTES
 												
 											createTimer(now.plusMinutes(7)) [|
 																	
-												if (Alarm_Panic_Btn.state == ON){
+												if (Alarm_Panic_Level_One_NO_DISPLAY.state == ON){
 																	
-												Alarm_Panic_Btn.sendCommand(OFF)										
+												Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)										
 									
 												logInfo("SIREN_SCREAMER","7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream") 												
 												sendNotification("ishmaelchibvuri@gmail.com", "7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream","")
