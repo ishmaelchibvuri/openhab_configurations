@@ -23,7 +23,7 @@ then
   
     }  
 	
-	sendCommand(OU_Backyard_Power, OFF) // Turn Off Sprinkler
+	sendCommand(OU_Water_Pump, OFF) // Turn Off Sprinkler
 end
 
 // OUTDOORS LIGHTS RULES
@@ -155,8 +155,8 @@ then
 		
 		//TURN OFF AFTER 30 MINUTES
 		createTimer(now.plusMinutes(30)) [|
-        	if (OU_Backyard_Power.state==ON) {				
-				sendCommand(OU_Backyard_Power, OFF)
+        	if (OU_Water_Pump.state==ON) {				
+				sendCommand(OU_Water_Pump, OFF)
 				logInfo("SPRINKLER_SYSTEM_AUTO_TIMER_OFF","30 minutes of garden watering has STOPPED") 
 			    sendNotification("ishmaelchibvuri@gmail.com", "30 minutes of garden watering has STOPPED","")
 				sendMail("montecastellonotifications@gmail.com", "SPRINKLER_SYSTEM_AUTO_TIMER_OFF", "30 minutes of garden watering has STOPPED")
@@ -167,9 +167,9 @@ end
 
 rule "SPRINKLER_SYSTEM_MANUAL_TRIGGER"
 when
-  Item OU_Backyard_Power received command // MANUAL TRIGGER
+  Item OU_Water_Pump received command // MANUAL TRIGGER
 then
-  if (OU_Backyard_Power.state==ON) {
+  if (OU_Water_Pump.state==ON) {
 		//Do something immediately
 			logInfo("SPRINKLER_SYSTEM_MANUAL_TRIGGER_ON","The Garden has STARTED watering") 
 			sendNotification("ishmaelchibvuri@gmail.com", "The Garden has STARTED watering","")
@@ -177,8 +177,8 @@ then
 		
 		//TURN OFF AFTER 30 MINUTES
 		createTimer(now.plusMinutes(30)) [|
-        	if (OU_Backyard_Power.state==ON) {				
-				sendCommand(OU_Backyard_Power, OFF)
+        	if (OU_Water_Pump.state==ON) {				
+				sendCommand(OU_Water_Pump, OFF)
 				
 				logInfo("SPRINKLER_SYSTEM_MANUAL_TRIGGER_OFF","30 minutes of gardern watering has FINISHED") 
 				sendNotification("ishmaelchibvuri@gmail.com", "30 minutes of gardern watering has FINISHED","")

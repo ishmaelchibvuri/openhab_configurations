@@ -14,7 +14,7 @@ Frame label="OUTDOORS"
 		    Default item=OU_Garage_Light label="Garage Light"
 			Default item=OU_Backyard_Light label="Garden Light"
 			Default item=F2_Balcony_Light label="Balcony Light"
-            Default item=OU_Backyard_Power label="Aquaponics Pump"
+            Default item=OU_Water_Pump label="Aquaponics Pump"
 	       }
 	   
 Frame label="DOWNSTAIRS"
