@@ -70,7 +70,7 @@ Switch    Alarm_Panic_Btn    ["Switch", "Switchable"]  {channel="mqtt:topic:50aa
 
 
 Switch    Door_Status_Light_NO_DISPLAY    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
-Switch    Alarm_Panic_Level_One_NO_DISPLAY     ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
+Switch    Alarm_Panic_Level_One_NO_DISPLAY  ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
 
 
 Group:Switch:OR(ON, OFF)         gLight         "Light"           <light>         (Home)   ["Lighting", "Switchable"]
