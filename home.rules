@@ -82,10 +82,6 @@ end
 
 
 
-
-
-
-
 // GEYSER RULES
 
 
@@ -93,7 +89,7 @@ rule "GEYSER_WEEKDAYS_ON"
 when
   Time cron "0 0 3 ? * MON,TUE,WED,THU,FRI *" //WEEKDAYS AT 0300HRS
 then
-  GF_LivingRoom_Fan.sendCommand(ON)    
+  AT_Geyser.sendCommand(ON)    
   logInfo("GEYSER_WEEKDAYS_ON","Geyser has been turned ON") 
   sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned ON","")
   sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKDAYS_ON", "Geyser has been turned ON")
@@ -104,7 +100,7 @@ rule "GEYSER_WEEKDAYS_OFF"
 when
   Time cron "0 30 5 ? * MON,TUE,WED,THU,FRI *" //EVERYDAY AT 0530HRS
 then
-  GF_LivingRoom_Fan.sendCommand(OFF)   
+  AT_Geyser.sendCommand(OFF)   
   logInfo("GEYSER_WEEKDAYS_OFF","Geyser has been turned OFF") 
   sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned OFF","")
   sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKDAYS_OFF", "Geyser has been turned OFF")
@@ -115,7 +111,7 @@ rule "GEYSER_WEEKEND_ON"
 when
   Time cron "0 30 5 ? * SAT,SUN *" //WEEKEND ON AT 0530HRS
 then
-  GF_LivingRoom_Fan.sendCommand(ON)   
+  AT_Geyser.sendCommand(ON)   
   logInfo("GEYSER_WEEKEND_ON","Geyser has been turned ON") 
   sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned ON","")
   sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKEND_ON", "Geyser has been turned ON")
@@ -126,15 +122,11 @@ rule "GEYSER_WEEKEND_OFF"
 when
   Time cron "0 30 9 ? * SAT,SUN *" //WEEKEND AT 0930HRS
 then
-  GF_LivingRoom_Fan.sendCommand(OFF)  
+  AT_Geyser.sendCommand(OFF)  
   logInfo("GEYSER_WEEKEND_OFF","Geyser has been turned OFF") 
   sendNotification("ishmaelchibvuri@gmail.com", "Geyser has been turned OFF","")
   sendMail("montecastellonotifications@gmail.com", "GEYSER_WEEKEND_OFF", "Geyser has been turned OFF")
 end
-
-
-
-
 
 
 
@@ -342,7 +334,7 @@ end
 
 
 
-rule "SIREN_SCREAMER"
+rule "SOFT_ALARM_SIREN_SCREAMER"
 when
   Item Alarm_Panic_Level_One_NO_DISPLAY received command // WHEN ALARM IS RINGING
 then
@@ -350,9 +342,9 @@ then
   
 		//Do something immediately
 		
-			logInfo("SIREN_SCREAMER","Soft Alarm Triggered!!") 			 
+			logInfo("SOFT_ALARM_SIREN_SCREAMER","Soft Alarm Triggered!!") 			 
 			sendNotification("ishmaelchibvuri@gmail.com", "Soft Alarm Triggered!!","")
-			sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Soft Alarm Triggered!!")
+			sendMail("montecastellonotifications@gmail.com", "SOFT_ALARM_SIREN_SCREAMER", "Soft Alarm Triggered!!")
 					
 							// KEEP SCREAMING FOR 1 MINUTE
 								
@@ -360,9 +352,9 @@ then
 													
 								if (Alarm_Panic_Level_One_NO_DISPLAY.state == ON && Alarm_Arming_Switch.state == ON){									
 					
-								logInfo("SIREN_SCREAMER","1 Minute Lapsed - SIREN NOW SCREEMING!!") 
+								logInfo("SOFT_ALARM_SIREN_SCREAMER","1 Minute Lapsed - SIREN NOW SCREEMING!!") 
 								sendNotification("ishmaelchibvuri@gmail.com", "1 Minute Lapsed - SIREN NOW SCREEMING!!","")
-								sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "1 Minute Lapsed - SIREN NOW SCREEMING!!")						
+								sendMail("montecastellonotifications@gmail.com", "SOFT_ALARM_SIREN_SCREAMER", "1 Minute Lapsed - SIREN NOW SCREEMING!!")						
 											
 								// SWITCH ON HOOVER
 								// TURN ON AND OFF THE LIGHTS
@@ -378,9 +370,9 @@ then
 												Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)
 												Alarm_Panic_Btn.sendCommand(OFF)										
 									
-												logInfo("SIREN_SCREAMER","7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream") 												
+												logInfo("SOFT_ALARM_SIREN_SCREAMER","7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream") 												
 												sendNotification("ishmaelchibvuri@gmail.com", "7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream","")
-												sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream")
+												sendMail("montecastellonotifications@gmail.com", "SOFT_ALARM_SIREN_SCREAMER", "7 Minutes Lapsed - NO REPONSE!! Stopped Alarm Scream")
 																	  
 												}	
 											]
@@ -396,8 +388,8 @@ then
 	} else {	
 
     
-	logInfo("SIREN_SCREAMER","Siren Turned Off!!") 
-	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren Turned Off!!")
+	logInfo("SOFT_ALARM_SIREN_SCREAMER","Siren Turned Off!!") 
+	sendMail("montecastellonotifications@gmail.com", "SOFT_ALARM_SIREN_SCREAMER", "Siren Turned Off!!")
 	sendNotification("ishmaelchibvuri@gmail.com", "Siren Turned Off!!","")	
 	
 	 if(F2_Bedroom_Door.state == CLOSED && GF_Front_Door.state == CLOSED && GF_LivingRoom_Door.state == CLOSED) {
@@ -413,7 +405,7 @@ end
 
 
 
-rule "SIREN_SCREAMER"
+rule "LOUD_ALARM_SIREN_SCREAMER"
 when
   Item Alarm_Panic_Btn received command // START OR STOP LOUD SIREN
 then
@@ -421,7 +413,20 @@ then
   
 		Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)
 													
-	} 
+	} else {	
+	
+	logInfo("LOUD_ALARM_SIREN_SCREAMER","Panick Loud Alarm is SCREAMING!!") 
+	sendMail("montecastellonotifications@gmail.com", "LOUD_ALARM_SIREN_SCREAMER", "Panick Loud Alarm is SCREAMING!!")
+	sendNotification("ishmaelchibvuri@gmail.com", "Panick Loud Alarm is SCREAMING!!","")
+
+	// KEEP SCREAMING FOR 8 MINUTES
+												
+											createTimer(now.plusMinutes(8)) [|
+											
+												Alarm_Panic_Btn.sendCommand(OFF)	
+											]	
+	
+	}
 end
 
 
