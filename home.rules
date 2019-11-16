@@ -390,7 +390,13 @@ then
     
 	logInfo("SOFT_ALARM_SIREN_SCREAMER","Siren Turned Off!!") 
 	sendMail("montecastellonotifications@gmail.com", "SOFT_ALARM_SIREN_SCREAMER", "Siren Turned Off!!")
-	sendNotification("ishmaelchibvuri@gmail.com", "Siren Turned Off!!","")	
+	sendNotification("ishmaelchibvuri@gmail.com", "Siren Turned Off!!","")
+
+	if (Alarm_Panic_Btn.state==ON) {
+	  
+			Alarm_Panic_Btn.sendCommand(OFF)
+														
+		}	
 	
 	 if(F2_Bedroom_Door.state == CLOSED && GF_Front_Door.state == CLOSED && GF_LivingRoom_Door.state == CLOSED) {
 		  
