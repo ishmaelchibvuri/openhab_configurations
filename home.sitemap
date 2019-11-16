@@ -35,8 +35,8 @@ Frame label="DOWNSTAIRS"
        }
 Frame label="ATTIC"
        {
-            Default item=GF_LivingRoom_Fan label="Geyser"
-			Default item=GF_LivingRoom_Fan label="Attic Light"
+            Default item=AT_Geyser label="Geyser"
+			Default item=AT_Attic_Light label="Attic Light"
        }
 	   
 Frame label="ALARM SYSTEM"{
