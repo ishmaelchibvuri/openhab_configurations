@@ -6,7 +6,7 @@ Group     AT                        "Attic"            <attic>              (Hom
 Group     OU                        "Outside"          <outdoor>             (Home)                        ["Outdoor"]
 Group     AL                        "Alarm"          <motion>             (Home)                        ["Alarm"]
 
-Switch    GF_Dining_Light           "Dining Light"            <light>              (GF, gLight)           ["Lighting", "Switchable"]         {channel=""}
+Switch    GF_Dining_Light           "Dining Light"            <light>              (GF, gLight)           ["Lighting", "Switchable"]         {channel="mqtt:topic:681ad722:GF_Dining_Light"}
 Switch    GF_Kitchen_Light          "Kitchen Light"            <light>              (GF, gLight)          ["Lighting", "Switchable"]         {channel=""}
 Switch    GF_Stairwell_Light        "Stairs Light"            <light>              (GF, gLight)        ["Lighting", "Switchable"]         {channel=""}
 Switch    GF_Toilet_Light           "Guest Toilet Light"            <light>              (GF, gLight)           ["Lighting", "Switchable"]         {channel=""}
