@@ -11,15 +11,15 @@ Switch    GF_Kitchen_Light          "Kitchen Light"            <light>          
 Switch    GF_Stairwell_Light        "Stairs Light"            <light>              (GF, gLight)        ["Lighting", "Switchable"]         {channel="mqtt:topic:df1d0d88:GF_Stairwell_Light"}
 Switch    GF_Toilet_Light           "Guest Toilet Light"            <light>              (GF, gLight)           ["Lighting", "Switchable"]         {channel="mqtt:topic:fe797eba:GF_Toilet_Light"}
 Switch    GF_LivingRoom_Light       "Sitting Room Light"            <light>              (GF, gLight)       ["Lighting", "Switchable"]         {channel="mqtt:topic:084707f3:GF_LivingRoom_Light"}
-Switch    GF_HTPC_Power          "HTPC Power"     <poweroutlet>        (GF, gPower)          ["Switch", "Switchable"]           {channel="mqtt:topic:bea5996b:GF_HTPC_Power"}
-Switch    GF_LivingRoom_Fan       "Fan"     <poweroutlet>        (GF, gPower)       ["Switch", "Switchable"]           {channel="mqtt:topic:50aae511:fan"}
+Switch    GF_HTPC_Power          "HTPC Power"     <switch>        (GF, gPower)          ["Switch", "Switchable"]           {channel="mqtt:topic:bea5996b:GF_HTPC_Power"}
+Switch    GF_LivingRoom_Fan       "Fan"     <switch>        (GF, gPower)       ["Switch", "Switchable"]           {channel="mqtt:topic:50aae511:fan"}
 
 
 Switch    F2_Balcony_Light          "Balcony Light"            <light>              (F2, gLight)          ["Lighting", "Switchable"]         {channel="mqtt:topic:776d8b70:F2_Balcony_Light"}
 Switch    F2_Bedroom_Light          "Bedroom Light"            <light>              (F2, gLight)          ["Lighting", "Switchable"]         {channel="mqtt:topic:291ba544:F2_Bedroom_Light"}
 Switch    F2_Bathroom_Light         "Bathroom Light"           <light>              (F2, gLight)         ["Lighting", "Switchable"]         {channel="mqtt:topic:0d7a1f09:F2_Bathroom_Light"}
 Switch    F2_KidsRoom_Light         "Kikis Room Light"         <light>              (F2, gLight)         ["Lighting", "Switchable"]         {channel="mqtt:topic:d8b4dae5:F2_KidsRoom_Light"}
-Switch    F2_KidsRoom_Power         "Kikis PC"     <poweroutlet>        (F2, gPower)         ["Switch", "Switchable"]           {channel="mqtt:topic:b5e1b89e:F2_KidsRoom_Power"}
+Switch    F2_KidsRoom_Power         "Kikis PC"     <switch>        (F2, gPower)         ["Switch", "Switchable"]           {channel="mqtt:topic:b5e1b89e:F2_KidsRoom_Power"}
 
 
 Switch    AT_Attic_Light       "Attic Light"       <light>              (AT, gLight)      ["Lighting", "Switchable"]         {channel="mqtt:topic:4da5284a:AT_Attic_Light"}
@@ -27,7 +27,7 @@ Switch    AT_Geyser            "Geyser"            <switch>        (AT, gPower) 
 
 
 Switch    OU_Backyard_Light         "Garden Light"            <light>              (OU, gLight)         ["Lighting", "Switchable"]         {channel="mqtt:topic:a7bb0e2f:OU_Backyard_Light"}
-Switch    OU_Water_Pump         "Water Fountain"     <poweroutlet>        (OU, gPower)         ["Switch", "Switchable"]           {channel=""}
+Switch    OU_Water_Pump         "Water Fountain"     <switch>        (OU, gPower)         ["Switch", "Switchable"]           {channel=""}
 Switch    OU_Garage_Light           "Garage Light"            <light>              (OU, gLight)           ["Lighting", "Switchable"]         {channel="mqtt:topic:8797f26b:OU_Garage_Light"}
 
 Switch    Alarm_Arming_Switch      ["Switch", "Switchable"]
@@ -45,7 +45,7 @@ Contact   GF_LivingRoom_Door        "Sitting Room Door [%s]"    (AL, gDoor)   { 
 
 
 Group:Switch:OR(ON, OFF)         gLight         "Light"           <light>         (Home)   ["Lighting", "Switchable"]
-Group:Switch:OR(ON, OFF)         gPower         "Power Outlet"    <poweroutlet>   (Home)   ["Switch", "Switchable"]
+Group:Switch:OR(ON, OFF)         gPower         "Power Outlet"    <switch>   (Home)   ["Switch", "Switchable"]
 Group:Contact:OR(OPEN, CLOSED)   gDoor          "Door"            <door>          (Home)   ["Door"]
 Group:Switch:OR(ON, OFF)         gMotion        "Motion Sensor"   <motion>        (Home)   ["MotionDetector", "Switchable"]
 
