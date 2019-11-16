@@ -392,11 +392,10 @@ then
 													
 	} else {	
 
-
     
-	logInfo("SIREN_SCREAMER","Soft Siren Turned Off!!") 
-	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Soft Siren Turned Off!!")
-	sendNotification("ishmaelchibvuri@gmail.com", "Soft Siren Turned Off!!","")	
+	logInfo("SIREN_SCREAMER","Siren Turned Off!!") 
+	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren Turned Off!!")
+	sendNotification("ishmaelchibvuri@gmail.com", "Siren Turned Off!!","")	
 	
 	 if(F2_Bedroom_Door.state == CLOSED && GF_Front_Door.state == CLOSED && GF_LivingRoom_Door.state == CLOSED) {
 		  
@@ -407,6 +406,20 @@ then
 end
 
 
+
+
+
+
+rule "SIREN_SCREAMER"
+when
+  Item Alarm_Panic_Btn received command // START OR STOP LOUD SIREN
+then
+  if (Alarm_Panic_Btn.state==OFF) {
+  
+		Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)
+													
+	} 
+end
 
 
 
