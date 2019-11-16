@@ -387,6 +387,10 @@ then
 											]
 							
 													  
+								} else {
+								
+								Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)
+								
 								}	
 							]
 													
