@@ -4,7 +4,7 @@ rule "SYSTEM INITIALIZATION"
 when
   System started //ON SYSTEM START
 then  
-  if(now.getHourOfDay < 18 && now.getHourOfDay > 5) {
+  if(now.getHourOfDay < 18 && now.getHourOfDay > 5)  {
   
   OU_Backyard_Light.sendCommand(OFF)
   OU_Garage_Light.sendCommand(OFF)
