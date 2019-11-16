@@ -200,6 +200,7 @@ if(Alarm_Arming_Switch.state == ON){
   if(F2_Bedroom_Door.state == OPEN || GF_Front_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
   
 			Alarm_Arming_Switch.sendCommand(OFF)
+			Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
   
 			if(F2_Bedroom_Door.state == OPEN) {
 			  
@@ -323,9 +324,9 @@ if (Alarm_Arming_Switch.state == ON){
 			
 				Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(OFF) // DOOR LIGHTS OFF
 					  
-				logInfo("DOORS CLOSED","All Doors have been closed")
-				sendNotification("ishmaelchibvuri@gmail.com", "All Doors have been closed","")
-				sendMail("montecastellonotifications@gmail.com", "DOORS CLOSED", "All Doors have been closed")
+				logInfo("DOORS CLOSED","All Doors now closed")
+				sendNotification("ishmaelchibvuri@gmail.com", "All Doors now closed","")
+				sendMail("montecastellonotifications@gmail.com", "DOORS CLOSED", "All Doors now closed")
 			
 			}
 						
@@ -343,19 +344,19 @@ then
   
 		//Do something immediately
 		
-			logInfo("SIREN_SCREAMER","ALARM IS SCREEMING!! - 1st Round - 1MIN") 			 
-			sendNotification("ishmaelchibvuri@gmail.com", "ALARM IS SCREEMING!! - 1st Round - 1MIN","")
-			sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "ALARM IS SCREEMING!! - 1st Round - 1MIN")
+			logInfo("SIREN_SCREAMER","Soft Alarm Triggered!!") 			 
+			sendNotification("ishmaelchibvuri@gmail.com", "Soft Alarm Triggered!!","")
+			sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Soft Alarm Triggered!!")
 					
 							// KEEP SCREAMING FOR 1 MINUTE
 								
 							createTimer(now.plusMinutes(1)) [|
 													
-								if (Alarm_Panic_Level_One_NO_DISPLAY.state == ON){									
+								if (Alarm_Panic_Level_One_NO_DISPLAY.state == ON && Alarm_Arming_Switch.state == ON){									
 					
-								logInfo("SIREN_SCREAMER","1 Minute Lapsed - ALARM IS SCREEMING!! - Activating Stage 2 Noise") 
-								sendNotification("ishmaelchibvuri@gmail.com", "1 Minute Lapsed - ALARM IS SCREEMING!! - Activating Stage 2 Noise","")
-								sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "1 Minute Lapsed - ALARM IS SCREEMING!! - Activating Stage 2 Noise")						
+								logInfo("SIREN_SCREAMER","1 Minute Lapsed - SIREN NOW SCREEMING!!") 
+								sendNotification("ishmaelchibvuri@gmail.com", "1 Minute Lapsed - SIREN NOW SCREEMING!!","")
+								sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "1 Minute Lapsed - SIREN NOW SCREEMING!!")						
 											
 								// SWITCH ON HOOVER
 								// TURN ON AND OFF THE LIGHTS
@@ -383,14 +384,17 @@ then
 							]
 													
 	} else {	
-	
-	Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(OFF)
-	logInfo("SIREN_SCREAMER","Siren has been DE-ACTIVATED!!") 
-	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has been DE-ACTIVATED!!")
-	sendNotification("ishmaelchibvuri@gmail.com", "Siren has been DE-ACTIVATED!!","")	
+
+
+    Alarm_Arming_Switch.sendCommand(OFF)
+	logInfo("SIREN_SCREAMER","Soft Alarm Turn Off!!") 
+	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Soft Alarm Turn Off!!")
+	sendNotification("ishmaelchibvuri@gmail.com", "Soft Alarm Turn Off!!","")	
 	
 	}
 end
+
+
 
 
 
