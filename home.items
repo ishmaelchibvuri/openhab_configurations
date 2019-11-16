@@ -36,7 +36,7 @@ Switch    Alarm_Panic_Btn    ["Switch", "Switchable"]  {channel="mqtt:topic:05b7
 
 Switch    Alarm_Door_Status_Light_NO_DISPLAY    ["Switch", "Switchable"]  {channel="mqtt:topic:ff298725:Alarm_Door_Status_Light_NO_DISPLAY"}
 
-Switch    Alarm_Panic_Level_One_NO_DISPLAY  ["Switch", "Switchable"]
+Switch    Alarm_Panic_Level_One_NO_DISPLAY  ["Switch", "Switchable"]  {channel="mqtt:topic:189d76e5:Alarm_Panic_Level_One_NO_DISPLAY"}
 
 
 Contact   F2_Bedroom_Door            "Bedroom Door [%s]"   (AL, gDoor)  { gpio="pin:21 activelow:yes" }
