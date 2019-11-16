@@ -240,8 +240,6 @@ if(Alarm_Arming_Switch.state == ON){
 	
 	} else {
 	
-			  Alarm_Panic_Btn.sendCommand(OFF)
-			  Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)
 			  logInfo("UN-ARMING_ALARM_SYSTEM","Alarm System is now IN-ACTIVE")
 			  sendNotification("ishmaelchibvuri@gmail.com", "Alarm System is now IN-ACTIVE","")
 			  sendMail("montecastellonotifications@gmail.com", "UN-ARMING_ALARM_SYSTEM", "Alarm System is now IN-ACTIVE")
