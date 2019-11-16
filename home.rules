@@ -393,7 +393,7 @@ then
 	} else {	
 
 
-    Alarm_Arming_Switch.sendCommand(OFF)
+    
 	logInfo("SIREN_SCREAMER","Soft Siren Turned Off!!") 
 	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Soft Siren Turned Off!!")
 	sendNotification("ishmaelchibvuri@gmail.com", "Soft Siren Turned Off!!","")	
