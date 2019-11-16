@@ -253,7 +253,7 @@ if (Alarm_Arming_Switch.state == ON){
 
 		  if(F2_Bedroom_Door.state == OPEN || GF_Front_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
 		  
-					Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
+					Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
 					Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(ON) // SIREN NOW SCREEMING			
 		  
 					if(F2_Bedroom_Door.state == OPEN) {
@@ -291,7 +291,7 @@ if (Alarm_Arming_Switch.state == ON){
 
 		  if(F2_Bedroom_Door.state == OPEN || GF_Front_Door.state == OPEN || GF_LivingRoom_Door.state == OPEN) {
 		  
-					Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
+					Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(ON) // DOOR LIGHTS ON
 		  
 					if(F2_Bedroom_Door.state == OPEN) {
 					  
@@ -321,7 +321,7 @@ if (Alarm_Arming_Switch.state == ON){
 		  
 			} else {			
 			
-				Door_Status_Light_NO_DISPLAY.sendCommand(OFF) // DOOR LIGHTS OFF
+				Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(OFF) // DOOR LIGHTS OFF
 					  
 				logInfo("DOORS CLOSED","All Doors have been closed")
 				sendNotification("ishmaelchibvuri@gmail.com", "All Doors have been closed","")
@@ -359,7 +359,7 @@ then
 											
 								// SWITCH ON HOOVER
 								// TURN ON AND OFF THE LIGHTS
-								 Door_Status_Light_NO_DISPLAY.sendCommand(ON)
+								 Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(ON)
 								 Alarm_Panic_Btn.sendCommand(ON)								 
 								
 											// KEEP SCREAMING FOR 7 MORE MINUTES
@@ -384,7 +384,7 @@ then
 													
 	} else {	
 	
-	Door_Status_Light_NO_DISPLAY.sendCommand(OFF)
+	Alarm_Door_Status_Light_NO_DISPLAY.sendCommand(OFF)
 	logInfo("SIREN_SCREAMER","Siren has been DE-ACTIVATED!!") 
 	sendMail("montecastellonotifications@gmail.com", "SIREN_SCREAMER", "Siren has been DE-ACTIVATED!!")
 	sendNotification("ishmaelchibvuri@gmail.com", "Siren has been DE-ACTIVATED!!","")	

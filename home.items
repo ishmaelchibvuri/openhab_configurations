@@ -34,7 +34,7 @@ Switch    Alarm_Arming_Switch      ["Switch", "Switchable"]
 Switch    Alarm_Panic_Btn    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
 
 
-Switch    Door_Status_Light_NO_DISPLAY    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
+Switch    Alarm_Door_Status_Light_NO_DISPLAY    ["Switch", "Switchable"]  {channel="mqtt:topic:50aae511:fan"}
 Switch    Alarm_Panic_Level_One_NO_DISPLAY  ["Switch", "Switchable"]  {channel="mqtt:topic:a7bb0e2f:OU_Backyard_Light"}
 
 
