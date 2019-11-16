@@ -415,7 +415,7 @@ rule "LOUD_ALARM_SIREN_SCREAMER"
 when
   Item Alarm_Panic_Btn received command // START OR STOP LOUD SIREN
 then
-  if (Alarm_Panic_Btn.state==OFF) {
+  if (Alarm_Panic_Btn.state==OFF) { 
   
 		Alarm_Panic_Level_One_NO_DISPLAY.sendCommand(OFF)
 													
