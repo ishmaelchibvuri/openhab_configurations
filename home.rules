@@ -8,6 +8,13 @@ then
   
   OU_Backyard_Light.sendCommand(OFF)
   OU_Garage_Light.sendCommand(OFF)
+  
+  GF_Kitchen_Light.sendCommand(OFF)  
+  GF_Dining_Light.sendCommand(OFF)  
+  GF_LivingRoom_Light.sendCommand(OFF)   
+  F2_KidsRoom_Light.sendCommand(OFF) 
+  F2_Bathroom_Light.sendCommand(OFF)
+  
   logInfo("POWER_IS_BACK","Power Restored : Outdoors lights turned OFF")
   sendNotification("ishmaelchibvuri@gmail.com", "Power Restored : Outdoors lights turned OFF","")
   sendMail("montecastellonotifications@gmail.com", "POWER_IS_BACK", "Power Restored : Outdoors lights turned OFF")
@@ -16,7 +23,16 @@ then
     else {
 	
   OU_Backyard_Light.sendCommand(ON)
-  OU_Garage_Light.sendCommand(ON)
+  OU_Garage_Light.sendCommand(ON)    
+  GF_Dining_Light.sendCommand(ON) 
+  
+  //TURN OFF AFTER 2HRS
+		createTimer(now.plusMinutes(120)) [| // 120mins
+        	if (GF_Dining_Light.state==ON) {				
+				sendCommand(GF_Dining_Light, OFF)
+				}
+    	] 
+		
   logInfo("POWER_IS_BACK","Power Restored : Outdoors lights turned ON")
   sendNotification("ishmaelchibvuri@gmail.com", "Power Restored : Outdoors lights turned ON","")
   sendMail("montecastellonotifications@gmail.com", "POWER_IS_BACK", "Power Restored : Outdoors lights turned ON")
@@ -53,31 +69,153 @@ end
 
 
 
-
-
-
 // KEITH LIGHT RULES
 
 
 rule "KIKI_LIGHT_ON"
 when
-  Time cron "0 0 18 1/1 * ? *" //EVERYDAY AT 1800HRS
+  Time cron "0 15 19 1/1 * ? *" //EVERYDAY AT 1915HRS
 then
-  F2_KidsRoom_Light.sendCommand(ON)    
+  F2_KidsRoom_Light.sendCommand(ON)  
+
+
+//TURN OFF AFTER 1.5HRS
+		createTimer(now.plusMinutes(90)) [|
+        	if (F2_KidsRoom_Light.state==ON) {				
+				sendCommand(F2_KidsRoom_Light, OFF)
+				}
+    	] 
+		
   logInfo("KIKI_LIGHT_ON","Keith room light has been turned ON") 
   sendNotification("ishmaelchibvuri@gmail.com", "Keith room light has been turned ON","")
   sendMail("montecastellonotifications@gmail.com", "KIKI_LIGHT_ON", "Keith room light has been turned ON")
 end
 
 
-rule "KIKI_LIGHT_OFF"
+rule "SIMULATE_KIKI_TOILET_0015HRS"
 when
-  Time cron "0 0 7 1/1 * ? *" //EVERYDAY AT 0700HRS
+  Time cron "0 15 1 1/1 * ? *" //EVERYDAY AT 0115HRS
 then
-  F2_KidsRoom_Light.sendCommand(OFF)    
-  logInfo("KIKI_LIGHT_OFF","Keith room light has been turned OFF") 
-  sendNotification("ishmaelchibvuri@gmail.com", "Keith room light has been turned OFF","")
-  sendMail("montecastellonotifications@gmail.com", "KIKI_LIGHT_OFF", "Keith room light has been turned OFF")
+  F2_KidsRoom_Light.sendCommand(ON)  
+  F2_Bathroom_Light.sendCommand(ON)
+
+//TURN OFF AFTER 5MINS
+		createTimer(now.plusMinutes(6)) [|
+        	if (F2_KidsRoom_Light.state==ON) {				
+				sendCommand(F2_KidsRoom_Light, OFF)
+				}
+    	] 
+		
+		
+//TURN OFF AFTER 2MINS
+		createTimer(now.plusMinutes(3)) [|
+        	if (F2_Bathroom_Light.state==ON) {				
+				sendCommand(F2_Bathroom_Light, OFF)
+				}
+    	]
+		
+  logInfo("SIMULATE_KIKI_TOILET_0015HRS","Simulation of Kiki Going to Toilet at 0015hrs triggered") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Simulation of Kiki Going to Toilet at 0015hrs triggered","")
+  sendMail("montecastellonotifications@gmail.com", "SIMULATE_KIKI_TOILET_0015HRS", "Simulation of Kiki Going to Toilet at 0015hrs triggered")
+end
+
+
+
+rule "SIMULATE_KIKI_TOILET_0328HRS"
+when
+  Time cron "0 28 3 1/1 * ? *" //EVERYDAY AT 0328HRS
+then
+  F2_KidsRoom_Light.sendCommand(ON)  
+  F2_Bathroom_Light.sendCommand(ON)
+
+//TURN OFF AFTER 5MINS
+		createTimer(now.plusMinutes(3)) [|
+        	if (F2_KidsRoom_Light.state==ON) {				
+				sendCommand(F2_KidsRoom_Light, OFF)
+				}
+    	] 
+		
+		
+//TURN OFF AFTER 2MINS
+		createTimer(now.plusMinutes(1)) [|
+        	if (F2_Bathroom_Light.state==ON) {				
+				sendCommand(F2_Bathroom_Light, OFF)
+				}
+    	]
+		
+  logInfo("SIMULATE_KIKI_TOILET_0328HRS","Simulation of Kiki Going to Toilet at 0328hrs triggered") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Simulation of Kiki Going to Toilet at 0328hrs triggered","")
+  sendMail("montecastellonotifications@gmail.com", "SIMULATE_KIKI_TOILET_0328HRS", "Simulation of Kiki Going to Toilet at 0328hrs triggered")
+end
+
+
+
+
+rule "SIMULATE_KIKI_GOING_TO_KITCHEN_1058HRS"
+when
+  Time cron "0 58 22 1/1 * ? *" //EVERYDAY AT 1058HRS
+then
+  F2_KidsRoom_Light.sendCommand(ON)  
+ 
+  
+  //TURN ON KITCHEN AFTER 1 MINUTE
+		createTimer(now.plusMinutes(1)) [|
+        	 GF_Kitchen_Light.sendCommand(ON)
+    	]
+
+//TURN OFF KITCHEN AFTER 4 MINUTES
+		createTimer(now.plusMinutes(3)) [|
+        	if (GF_Kitchen_Light.state==ON) {				
+				sendCommand(GF_Kitchen_Light, OFF)
+				}
+    	] 
+		
+		
+//TURN OFF KIKI LIGHT AFTER 5MINS
+		createTimer(now.plusMinutes(5)) [|
+        	if (F2_Bathroom_Light.state==ON) {				
+				sendCommand(F2_Bathroom_Light, OFF)
+				}
+    	]
+		
+  logInfo("SIMULATE_KIKI_GOING_TO_KITCHEN_1058HRS","Simulation of Kiki Going to Kitchen at 1058hrs triggered") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Simulation of Kiki Going to Kitchen at 1058hrs triggered","")
+  sendMail("montecastellonotifications@gmail.com", "SIMULATE_KIKI_GOING_TO_KITCHEN_1058HRS", "Simulation of Kiki Going to Kitchen at 1058hrs triggered")
+end
+
+
+
+
+
+rule "SIMULATE_VISITOR_DINING_TO_BATHROOM_0235HRS"
+when
+  Time cron "0 6 2 1/1 * ? *" //EVERYDAY AT 0235HRS
+then
+  GF_Dining_Light.sendCommand(ON)  
+  
+  //TURN ON BATHROOM AFTER 1 MINUTE
+		createTimer(now.plusMinutes(1)) [|
+        	 F2_Bathroom_Light.sendCommand(ON)
+    	]
+
+//TURN OFF BATHROOM AFTER 3 MINUTES
+		createTimer(now.plusMinutes(3)) [|
+        	if (F2_Bathroom_Light.state==ON) {				
+				sendCommand(F2_Bathroom_Light, OFF)
+				}
+    	] 
+		
+		
+//TURN OFF DINING LIGHT AFTER 5MINS
+		createTimer(now.plusMinutes(5)) [|
+        	if (GF_Dining_Light.state==ON) {				
+				sendCommand(GF_Dining_Light, OFF)
+				}
+    	]
+		
+  logInfo("SIMULATE_VISITOR_DINING_TO_BATHROOM_0235HRS","Simulation of Visitor to upstairs bathroom at 0235hrs triggered") 
+  sendNotification("ishmaelchibvuri@gmail.com", "Simulation of Visitor to upstairs bathroom at 0235hrs triggered","")
+  sendMail("montecastellonotifications@gmail.com", "SIMULATE_VISITOR_DINING_TO_BATHROOM_0235HRS", "Simulation of Visitor to upstairs bathroom at 0235hrs triggered")
 end
 
 
@@ -492,3 +630,78 @@ if(ishmael_huawei_is_home.state == OFF && esther_huawei_is_home.state == OFF && 
 			
 end
 
+// ALL LIGHTS OFF AT 6AM
+
+rule "ALL_INDOORS_LIGHTS_OFF"
+when
+  Time cron "0 0 6 1/1 * ? *" //EVERYDAY AT 0600HRS
+then
+
+  GF_Kitchen_Light.sendCommand(OFF)  
+  GF_Dining_Light.sendCommand(OFF)  
+  GF_LivingRoom_Light.sendCommand(OFF)   
+  F2_KidsRoom_Light.sendCommand(OFF) 
+  F2_Bathroom_Light.sendCommand(OFF)  
+  
+  logInfo("ALL_INDOORS_LIGHTS_OFF","Indoors lights have been turned OFF")  
+  sendNotification("ishmaelchibvuri@gmail.com", "Indoors lights have been turned OFF","")
+  sendMail("montecastellonotifications@gmail.com", "ALL_INDOORS_LIGHTS_OFF", "Indoors lights have been turned OFF")
+end
+
+
+
+// ALL INDOORS LIGHTS ON AT 6PM
+
+rule "INDOORS_LIGHTS_AUTOMATION_ON"
+when
+  Time cron "0 33 18 1/1 * ? *" //EVERYDAY AT 1833HRS
+then
+
+GF_Kitchen_Light.sendCommand(ON)
+GF_Dining_Light.sendCommand(ON)
+F2_Bathroom_Light.sendCommand(ON) 
+GF_LivingRoom_Light.sendCommand(ON) 
+
+  logInfo("INDOORS_LIGHTS_AUTOMATION_ON","Indoors lights have been turned ON")  
+  sendNotification("ishmaelchibvuri@gmail.com", "Indoors lights have been turned ON","")
+  sendMail("montecastellonotifications@gmail.com", "INDOORS_LIGHTS_AUTOMATION_ON", "Indoors lights have been turned ON")
+
+//TURN OFF AFTER 2.5HRS
+		createTimer(now.plusMinutes(150)) [|//150mins
+        	if (GF_Kitchen_Light.state==ON) {				
+				sendCommand(GF_Kitchen_Light, OFF)
+				sendCommand(GF_LivingRoom_Light, OFF)
+				
+				logInfo("INDOORS_LIGHTS_AUTOMATION_ON","Kitchen and Sitting Rooms Lights OFF")  
+				sendNotification("ishmaelchibvuri@gmail.com", "Kitchen and Sitting Rooms Lights OFF","")
+				sendMail("montecastellonotifications@gmail.com", "INDOORS_LIGHTS_AUTOMATION_ON", "Kitchen and Sitting Rooms Lights OFF")
+  
+				}
+    	]
+ 
+//TURN OFF AFTER 3HRS
+		createTimer(now.plusMinutes(180)) [| // 180mins
+        	if (GF_Dining_Light.state==ON) {				
+				sendCommand(GF_Dining_Light, OFF)			
+				
+				logInfo("INDOORS_LIGHTS_AUTOMATION_ON","Dining Room Light OFF")  
+				sendNotification("ishmaelchibvuri@gmail.com", "Dining Room Light OFF","")
+				sendMail("montecastellonotifications@gmail.com", "INDOORS_LIGHTS_AUTOMATION_ON", "Dining Room Light OFF")
+				}
+    	] 
+		
+		
+//TURN OFF AFTER 2HRS
+		createTimer(now.plusMinutes(120)) [| //120mins
+        	if (F2_Bathroom_Light.state==ON) {				
+				sendCommand(F2_Bathroom_Light, OFF)
+						
+				
+				logInfo("INDOORS_LIGHTS_AUTOMATION_ON","Bathroom Room Light OFF")  
+				sendNotification("ishmaelchibvuri@gmail.com", "Bathroom Room Light OFF","")
+				sendMail("montecastellonotifications@gmail.com", "INDOORS_LIGHTS_AUTOMATION_ON", "Bathroom Room Light OFF")
+				}
+    	] 
+   
+
+end
