@@ -34,7 +34,7 @@ end
 
 rule "OUTSIDE_LIGHTS_ON"
 when
-  Time cron "0 0 18 1/1 * ? *" //EVERYDAY AT 1800HRS
+  Time cron "0 30 17 1/1 * ? *" //EVERYDAY AT 1800HRS
 then
   OU_Backyard_Light.sendCommand(ON)
   OU_Garage_Light.sendCommand(ON)  
